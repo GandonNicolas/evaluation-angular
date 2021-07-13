@@ -1,0 +1,27 @@
+<div class="container">
+  <h3>DETAILS : </h3>
+    <div class="col-md-3 col-sm-6 product-item">
+        <div class="thumbnail">
+          <img [src]="detailProduct?.photo" alt="">
+          <div class="caption">
+            <h3>{{detailProduct?.title | uppercase }} - {{detailProduct?.price | currency:'EUR'}}</h3>
+            <p>{{detailProduct?.description}}</p>
+            <p>
+              <button class="btn btn-primary">Add to Cart</button>
+            </p>
+            <div *ngIf="detailProduct?.stock === 1">
+                <p class="last">DERNIER DISPONIBLE</p>
+            </div>
+            <p [ngClass]="{last: isTheLast(detailProduct?.stock)}">{{detailProduct?.stock }} en stock</p>
+          </div>
+        </div>
+      </div>
+</div>
+<div class="container">
+  <h3>Autre produit qui pourrais vous plaire : </h3>
+
+  <ng-container *ngFor="let product of products">
+    <app-product *ngIf="isAvailable(product)" [data]="product"></app-product>
+  </ng-container>
+</div>
+
