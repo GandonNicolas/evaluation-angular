@@ -14,7 +14,7 @@ export class ProductDetailsComponent {
 
   detailProduct: Product;
 
-  pgit = [];
+  products: Product[] = [];
   
   constructor(private productService: ProductService, private route: ActivatedRoute) 
   {
